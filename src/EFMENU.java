@@ -30,14 +30,15 @@ public class EFMENU {
     						"1 - Banco do Brasil - Relatorios Excel Judicial",
     						"2 - Banco do Brasil - Relatorios Excel IR",
     						"3 - Caixa Economica - Relatorios Excel Judicial",
-    						"4 - Caixa Economica - Relatorios Excel Recursal", 
+    						"4 - Caixa Economica - Relatorios Excel Recursal",
+    						"5 - Processual	- Relatorios Excel Processual",
     						" ",
     						"ROBOS EXTRATOS",
     						"1 - Caixa Economica - Puxar Extratos Judicial",
     						"2 - Banco do Brasil - Puxar Extratos Judicial",
     						"3 - Banco do Brasil - Puxar Extratos IR",
-    						"",
-    						};
+    						" ",
+    					};
     
     JFrame frame = new JFrame("EFICIENCIA FINANCEIRA");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -338,6 +339,21 @@ public class EFMENU {
     	  					+ 		"\n");
     	  		}
     	  		
+    	  		if(comboBox.getSelectedItem().equals("5 - Processual	- Relatorios Excel Processual"))
+    	  		{
+    	  			textArea.setText(""
+    	  					+ 		"\n"
+    	  					+ 		" Robo que atualiza as informacoes processuais tais como:"
+    	  					+ 		"\n"
+    	  					+ 		" Numero do processo, Vara, Comarca, Reu e Autor:"
+    	  					+ 		"\n"
+    	  					+ 		"\n"
+    	  					+ 		" Importante:"
+    	  					+ 		"\n"
+    	  					+ 		" Apenas o formato Eletronico esta disponivel"
+    	  					+ 		"\n");
+    	  		}
+    	  		
     	  		
     	  		
       }
@@ -629,6 +645,34 @@ public class EFMENU {
     	  				e.printStackTrace();
     	  			}
     	  		}
+       	  	
+       	  	if(comboBox.getSelectedItem().equals("5 - Processual	- Relatorios Excel Processual"))
+    	  		{
+    	  			System.out.println("VAI CHAMAR O ROBO: 5 - Processual	- Relatorios Excel Processual");
+    	  			
+    	  			try 
+    	  			{
+    	  				//Runtime.getRuntime().exec("C:\\ROBOS\\EXTRATO_CAIXA_COMDATAFIM.bat");
+
+    	  				 processo = Runtime.getRuntime().exec("C:\\ROBOS\\EFROBOPROCESSUAL.bat");    	  					
+    	  				 br = new BufferedReader(new InputStreamReader(processo.getInputStream()));
+    	  				
+    	  				String linha;    	  					
+    	  				while((linha = br.readLine()) != null)
+    	  				{
+    	            			System.out.println(linha);    	  	            			
+  	  	            		//textArea.setText(linha);
+    	    	  			}
+    	  				
+
+    	  			}
+    	  			catch (IOException e) 
+    	  			{
+    	  				e.printStackTrace();
+    	  			}
+    	  		}
+       	  	
+       	 
        	  		
     	  		
     	  		
